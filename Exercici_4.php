@@ -3,7 +3,7 @@
    <title>Tablas de multiplicar.</title> 
 </head>
 <body>
-<form action="Exercici_4.php" method="post">
+<form method="post">
   <label for="fname">Nom</label>
   <input type="text" id="fname" name="fname"><br>
   <label for="lname">Cognom</label>
@@ -17,13 +17,13 @@
   <input type="radio" id="alumne" name="user" value="alumne">
   <label for="female">Alumne</label><br>
 
+  <label for="activo">Es actiu</label>  
+  <input type="checkbox" name="activo" id="checkbox" checked><br>
+
+  <label for="file">Foto</label>    
   <input type="file" name="archivo"><br>
 
-  <textarea name="texto" rows="4" cols="40" placeholder="((Comentaris de l'usuari))"></textarea><br>
-
-  <input type="checkbox" name="checkbox" id="checkbox" checked>
-  <label>Es actiu</label><br>
-
+  <label for="menu">Edat</label>    
   <select name="menu">
     <?php
     $edad=18;
@@ -33,6 +33,9 @@
     }
     ?>
   </select><br>
+
+  <label for="texto">Comentaris</label>    
+  <textarea name="texto" rows="4" cols="40" placeholder="((Comentaris de l'usuari))"></textarea><br>
   
   <input type="hidden" id="oculto" name="oculto" value="prova">  
 
@@ -40,20 +43,34 @@
   <input type="submit" value="Submit">
 </form>
 <?php 
-
-if (isset($fname)){
-    $fname=$_POST['fname'];
-    $lname=$_POST['lname'];
+/*$lname=$_POST['lname'];
     $passwd=$_POST['passwd'];
     
     $user=$_POST['user'];
     $archivo=$_POST['archivo'];
     $texto=$_POST['texto'];
     $menu=$_POST['menu'];
-    $oculto=$_POST['oculto'];
+    $oculto=$_POST['oculto']; */
 
-    echo $fname;
-}
+    if (isset($_POST['fname'],$_POST['lname'],$_POST['user'],$_POST['activo'],$_POST['archivo'],$_POST['texto'],$_POST['menu'],$_POST['oculto'])) {
+        $fname=$_POST['fname'];
+        $lname=$_POST['lname'];
+        $passwd=$_POST['passwd'];
+        $user=$_POST['user'];
+        $activo=$_POST['activo'];
+        $archivo=$_POST['archivo'];
+        $texto=$_POST['texto'];
+        $menu=$_POST['menu'];
+        $oculto=$_POST['oculto'];
+        echo "$lname<br>";
+        echo "$fname<br>";
+        echo "$passwd<br>";
+        echo "$user<br>";
+        echo "$archivo<br>";
+        echo "$texto<br>";
+        echo "$menu<br>";
+        echo "$oculto<br>";
+    }
 
 ?>
 </body>
