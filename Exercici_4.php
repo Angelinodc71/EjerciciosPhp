@@ -1,6 +1,5 @@
 <html>
 <head>
-   <title>Tablas de multiplicar.</title> 
 </head>
 <body>
 <form method="post">
@@ -18,7 +17,7 @@
   <label for="female">Alumne</label><br>
 
   <label for="activo">Es actiu</label>  
-  <input type="checkbox" name="activo" id="checkbox" checked><br>
+  <input type="checkbox" id="checkbox" name="activo" checked><br>
 
   <label for="file">Foto</label>    
   <input type="file" name="archivo"><br>
@@ -42,35 +41,38 @@
   <input type="reset" value="Esborrar">
   <input type="submit" value="Submit">
 </form>
-<?php 
-/*$lname=$_POST['lname'];
-    $passwd=$_POST['passwd'];
-    
-    $user=$_POST['user'];
-    $archivo=$_POST['archivo'];
-    $texto=$_POST['texto'];
-    $menu=$_POST['menu'];
-    $oculto=$_POST['oculto']; */
+<?php
 
-    if (isset($_POST['fname'],$_POST['lname'],$_POST['user'],$_POST['activo'],$_POST['archivo'],$_POST['texto'],$_POST['menu'],$_POST['oculto'])) {
+    if (isset($_POST['fname'],$_POST['lname'],$_POST['user'],$_POST['archivo'],$_POST['texto'],$_POST['menu'],$_POST['oculto'])) {
         $fname=$_POST['fname'];
         $lname=$_POST['lname'];
         $passwd=$_POST['passwd'];
         $user=$_POST['user'];
-        $activo=$_POST['activo'];
         $archivo=$_POST['archivo'];
         $texto=$_POST['texto'];
         $menu=$_POST['menu'];
         $oculto=$_POST['oculto'];
-        echo "$lname<br>";
-        echo "$fname<br>";
-        echo "$passwd<br>";
-        echo "$user<br>";
-        echo "$archivo<br>";
-        echo "$texto<br>";
-        echo "$menu<br>";
-        echo "$oculto<br>";
+        
+        echo "POST[nom] = $fname<br>";
+        echo "POST[cognom] = $lname<br>";
+        echo "POST[password] = ";
+        echo md5($passwd);
+        echo "<br>POST[usuari] = $user<br>";
+        
+        if (isset($_POST['activo'])) {
+            $activo=$_POST['activo'];
+            echo "POST[actiu] = on<br>";
+        }
+        else {
+            echo "POST[actiu] = off<br>";
+        }
+
+        echo "POST[foto] = $archivo<br>";
+        echo "POST[edat] = $texto<br>";
+        echo "POST[comentaris] = $menu<br>";
+        echo "POST[ocult] = $oculto<br>";
     }
+
 
 ?>
 </body>
