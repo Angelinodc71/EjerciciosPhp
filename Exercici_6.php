@@ -3,31 +3,6 @@
 </head>
 <body>
 <h1>Cookies: Creació i destrucció</h1>
-<?php
-// set the cookies
-setcookie("cookie[four]", "cookiefour", time()+60);
-setcookie("cookie[three]", "cookiethree");
-setcookie("cookie[two]", "cookietwo");
-setcookie("cookie[one]", "cookieone");
-
-// después de que la página se recargue, imprime
-if (isset($_COOKIE['cookie'])) {
-    foreach ($_COOKIE['cookie'] as $name => $value) {
-        $name = htmlspecialchars($name);
-        $value = htmlspecialchars($value);
-        echo "$name : $value <br />\n";
-    }
-}
-if (isset($_POST['fname'])) {
-    $fname=$_POST['fname'];
-    echo "Cookie creada. Es destruirà en $fname segons.<br>";
-    setcookie("cookie[four]", "cookiefour", time()-60);
-
-}
-else {
-    echo "";
-}
-?>
 <p>Tria una opció:</p>
 <form action="Exercici_6.php" method="post">
 <ul>
@@ -48,12 +23,50 @@ else {
     </li>
 </ul>
 <?php
-if (isset($_POST['destroyed'])) {
-    $destroyed=$_POST['destroyed'];
-    setcookie("cookie[three]", "cookiethree", time() - 3600);}
-else {
-    echo "";
-}
+// después de que la página se recargue, imprime
+
+    if (isset($_POST['fname'])) {
+        $fname=$_POST['fname'];
+    }
+    
+    //CREAR
+    if (isset($_POST['created'])) {
+        echo "Cookie creada. Es destruirà en $fname segons.<br>";
+        $timeS=date('s',time());
+        session_start();
+        setcookie("cookie","f",time() + $fname);
+        $_SESSION['fname']=$_POST['fname'];
+        $_SESSION['timeS']=$timeS;
+    }
+    else {
+        echo "";
+    }
+
+    //COMPROVAR
+    if (isset($_POST['checked'])) {
+        if (isset($_COOKIE['cookie'])) {
+            session_start();
+            $segundos=date('s',($_SESSION['timeS']-(time()-$_SESSION['fname'])));
+            if($segundos=="00") {
+                echo "Cookie muerta";
+                setcookie("cookie","f",time() - $_SESSION['fname']);
+            }
+            else {
+                echo "Cookie creada. Es destruirà en $segundos segons.<br>";
+            }
+        }
+        
+    }
+
+    //DESTRUIR
+    if (isset($_POST['destroyed'])) {
+        session_start();
+        setcookie("cookie","f",time() - $_SESSION['fname']);
+        echo "Cookie destruida";
+    }
+    else {
+        echo "";
+    }
 
 ?>
 

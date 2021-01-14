@@ -46,6 +46,7 @@
     if (isset($_POST['fname'],$_POST['lname'],$_POST['user'],$_POST['archivo'],$_POST['texto'],$_POST['menu'],$_POST['oculto'])) {
         $fname=$_POST['fname'];
         $lname=$_POST['lname'];
+        // var_dump($_POST['passwd']);
         $passwd=$_POST['passwd'];
         $user=$_POST['user'];
         $archivo=$_POST['archivo'];
@@ -55,8 +56,13 @@
         
         echo "POST[nom] = $fname<br>";
         echo "POST[cognom] = $lname<br>";
-        echo "POST[password] = ";
-        echo md5($passwd);
+        if (!$passwd=="") {
+            echo "POST[password] = ";
+            echo md5($passwd);
+        }
+        else {
+            echo "POST[password] = ";
+        }
         echo "<br>POST[usuari] = $user<br>";
         
         if (isset($_POST['activo'])) {
