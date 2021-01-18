@@ -14,9 +14,10 @@
 
     <body>
 
-        <p>Cognoms anteriors:<b>
-            <?php session_start(); if(isset($_SESSION['name2'])) echo $_SESSION["name2"]; ?>
-        </b></p>
+        <?php 
+            session_start(); 
+            if(isset($_SESSION["name2"])) echo "<p>Cognoms anteriors: <b>".$_SESSION["name2"]."</b></p>"; 
+        ?>
 
         <p>Escriu els teus cognoms: </p>
 

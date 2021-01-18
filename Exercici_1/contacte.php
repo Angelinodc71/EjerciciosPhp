@@ -14,13 +14,11 @@
         include 'header.php';
         include 'nav.php';
         include 'aside.php';
-    
    
     echo '<section>
             <h2>El VIDEO DEL NENG</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/watch?v=fKopy74weus&list=RDfKopy74weus&start_radio=1" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/armfqTL5iFY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </section>';
-    
     
         include 'footer.php';
     ?>

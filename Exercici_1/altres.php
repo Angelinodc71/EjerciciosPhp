@@ -18,7 +18,7 @@
    
     echo '<section>
             <h2>El VIDEO DEL NENG</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/watch?v=J_ub7Etch2U&list=RDfKopy74weus&index=3" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/7KlY58-V2_s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </section>';
     
     

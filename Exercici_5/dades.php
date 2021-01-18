@@ -24,7 +24,7 @@
                 if(isset($_SESSION['name2'])) echo $_SESSION["name2"];
             echo "</b></p>";
 
-            echo "<a href="index.php">Inici</a>";
+            echo '<a href="index.php">Inici</a>';
             
         ?>
     </body>

@@ -1,0 +1,186 @@
+body {
+    font-family: Arial;
+    margin: 0;
+  }
+  
+  @font-face {
+    font-family: "grafiti";
+    src: url("img/bombing.ttf");
+  }
+
+  header {
+      display: inline-flex ;
+      background-color: #49FB58;
+      font-size: 100px;
+      color: black;
+      text-align: center;
+      justify-content: center;
+      font-family: "grafiti";
+      width: 100%;
+  }
+  header a {
+    display: inline-flex;
+  }
+
+  #myVideo {
+    position: fixed;
+  }
+
+  @keyframes rotate {from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}}
+  @-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}}
+
+  header .izquierda {
+    width: 5%;
+    height: 5%;
+    margin: 10px;                
+    -webkit-animation: 3s rotate linear 2;
+    animation: 1s rotate linear 2;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+
+
+  header .derecha {
+      width: 5%;
+      height: 5%;
+      transform: scaleX(-1);
+      margin: 10px;                
+      -webkit-animation: 3s rotate linear 2;
+      animation: 1s rotate linear 2;
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+  }
+
+  
+  
+  
+  /* Change color on hover */
+  nav, .navbar-inverse {
+    top: 0;
+    position: sticky;
+    border-radius: 0px 0px 0px 0px;
+  }
+  nav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .navbar-brand {
+    font-family: "grafiti";
+    font-size: 0.5em;
+    text-align: center;
+    align-items: center;
+  }
+  
+  /* Column container */
+  aside {
+    display: inline-flex;
+    float: left;              
+    flex-direction: column;
+    width: 28%;
+    height: 100%;
+    flex: 28%;  
+    flex-wrap: wrap;
+    padding: 20px 0px 0px 20px;
+    display: inline-block;
+  }
+  
+  /* Main column */
+  section {
+    flex-direction: column;
+    display: flex;
+    flex: 70%;
+    width: 70%;
+    display: inline-block;
+    background-color: white;
+    padding: 0px 10px 10px 10px;
+  }
+  iframe {
+    display: flex;
+    flex-wrap: wrap;
+    display: inline-block;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #292c2f;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    padding: 20px 50px;
+              }    
+
+  footer, .footer-left p {
+    color: #8f9296;
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  /* Footer links */
+
+  footer p.footer-links {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0px 0px 10px;
+    padding: 0px;
+  }
+
+  footer p.footer-links a {
+    display: inline-block;
+    line-height: 1.8px;
+    text-decoration: none;
+    color: inherit;
+    transition: ease .25s;
+  }
+
+  /*Para poner los puntos entre las palabras*/
+  footer .footer-links a:before {
+    content: "·";
+    font-size: 20px;
+    left: 0px;
+    color: #fff;
+    display: inline-block;
+    padding-right: 5px;
+  }
+  
+  footer img{
+    display: flex;
+    content: "·";
+    font-size: 20px;
+    left: 0px;
+    color: #fff;
+    display: inline-block;
+    padding-right: 5px;
+    width: 2%;
+    text-align: center;
+    display: inline-block;
+    align-content: center;
+  }
+
+  
+  /* Responsive layout - cuando la pantalla es de menos 900px se activa esta opción, es importante tener en cuenta la resolucion de la pantalla */
+  @media screen and (max-width: 900px) {
+    .row, nav , .navbar-inverse{   
+      border-radius: 0%;
+      flex-direction: column-reverse;
+      display: flex;
+    }
+    section, aside {
+      width: 100%;
+    }
+    footer .footer-left, footer .footer-right {
+      text-align: center;
+    }
+    footer .footer-left p.footer-links {
+      line-height: 1.8px;
+    }
+  }
+
+  /*Buggs con imagenes*/
+  .clearfix {
+    overflow: auto;
+  }

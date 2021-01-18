@@ -3,6 +3,64 @@
 </head>
 <body>
 <h1>Cookies: Creació i destrucció</h1>
+<?php
+
+    //CREAR
+    if (isset($_POST['created'])) {
+        if (!empty($_POST["fname"])) {
+            $fname=$_POST["fname"];
+            setcookie("DANI",time() + $fname,time() + $fname);
+            echo "Cookie creada. Es destruirà en $fname segons.<br>";
+        }
+        else {
+            echo "Introduce los segundos porfa.";
+        }
+    }
+
+    //COMPROVAR
+    /*
+        if (isset($_POST['checked'])) {
+           if (isset($_COOKIE['cookie'])) {
+            session_start();
+            $segundos=date('s',($_SESSION['timeS']-(time()-$_SESSION['fname'])));
+            if($segundos=="00") {
+                echo "Cookie muerta";
+                setcookie("cookie","f",time() - $_SESSION['fname']);
+            }
+            else {
+                echo "Cookie creada. Es destruirà en $segundos segons.<br>";
+            }
+        }
+    }
+    */
+    if(isset($_POST["checked"]) ){
+        if(isset($_COOKIE["DANI"])){
+            $tiempoRestante = $_COOKIE["DANI"] - time();
+            if (!$tiempoRestante==NULL){
+                echo "Cookie creada. Es destruirà en $tiempoRestante segons.<br>";
+            }
+            else {
+                echo "Cookie expired. Crea una nueva cookie con el boton crear.";
+            }
+        }
+        else {
+            echo "Cookie expired. Crea una nueva cookie con el boton crear.";
+        }
+    }
+
+    //DESTRUIR
+    if (isset($_POST['destroyed'])) {
+        if(isset($_COOKIE['DANI'])) {
+            setcookie("DANI", time() - 3600);
+            echo "Cookie destroyed. Crea una nueva cookie con el boton crear.";
+        }
+        else {
+            echo "Cookie expired. Crea una nueva cookie con el boton crear.";
+        }
+    }
+
+?>
+
 <p>Tria una opció:</p>
 <form action="Exercici_6.php" method="post">
 <ul>
@@ -22,54 +80,6 @@
         <input type="submit" value="Destruir" name="destroyed">
     </li>
 </ul>
-<?php
-// después de que la página se recargue, imprime
-
-    if (isset($_POST['fname'])) {
-        $fname=$_POST['fname'];
-    }
-    
-    //CREAR
-    if (isset($_POST['created'])) {
-        echo "Cookie creada. Es destruirà en $fname segons.<br>";
-        $timeS=date('s',time());
-        session_start();
-        setcookie("cookie","f",time() + $fname);
-        $_SESSION['fname']=$_POST['fname'];
-        $_SESSION['timeS']=$timeS;
-    }
-    else {
-        echo "";
-    }
-
-    //COMPROVAR
-    if (isset($_POST['checked'])) {
-        if (isset($_COOKIE['cookie'])) {
-            session_start();
-            $segundos=date('s',($_SESSION['timeS']-(time()-$_SESSION['fname'])));
-            if($segundos=="00") {
-                echo "Cookie muerta";
-                setcookie("cookie","f",time() - $_SESSION['fname']);
-            }
-            else {
-                echo "Cookie creada. Es destruirà en $segundos segons.<br>";
-            }
-        }
-        
-    }
-
-    //DESTRUIR
-    if (isset($_POST['destroyed'])) {
-        session_start();
-        setcookie("cookie","f",time() - $_SESSION['fname']);
-        echo "Cookie destruida";
-    }
-    else {
-        echo "";
-    }
-
-?>
-
 </form>
 </body>
 </html>
